@@ -1,0 +1,15 @@
+docker ps \\view all containers
+docker exec -it <containers' name> bash \\ enter the container
+# core 1 : minner
+# core 2 : alliance
+# core 3 : not used for now
+
+# mint new license in core 2 
+gcoin-cli mintforlicense \\mint之後回傳的值是transaction id; mint coin for license issueing
+
+gcoin-cli getfixedaddress
+#step_1:
+gcoin-cli mintforlicensegcoin \\ 
+gcoin-cli encodelicenseinfo '{"version":1,"name":"Gcoin","description":"testing","issuer":"Gcoin","divisibility":true,"fee_type":"fixed","fee_rate":0.0,"upp
+er_limit":0,"fee_collector":"1AjJ6zXAH2jw1azy4Zd7r3fdANLiZjsh83","mint_schedule":"free","member_control":false,"metadata_link":"http://g-coin.org"
+,"metadata_hash":"9df8088af07cb269bb9a33478c1a281199c6cd5ab317ff82929201ed1501f0c1"}'
