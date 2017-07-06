@@ -4,12 +4,38 @@ docker exec -it <containers' name> bash \\ enter the container
 # core 2 : alliance
 # core 3 : not used for now
 
-# mint new license in core 2 
-gcoin-cli mintforlicense \\mint之後回傳的值是transaction id; mint coin for license issueing
 
-gcoin-cli getfixedaddress
 #step_1:
-gcoin-cli mintforlicensegcoin \\ 
-gcoin-cli encodelicenseinfo '{"version":1,"name":"Gcoin","description":"testing","issuer":"Gcoin","divisibility":true,"fee_type":"fixed","fee_rate":0.0,"upp
-er_limit":0,"fee_collector":"1AjJ6zXAH2jw1azy4Zd7r3fdANLiZjsh83","mint_schedule":"free","member_control":false,"metadata_link":"http://g-coin.org"
-,"metadata_hash":"9df8088af07cb269bb9a33478c1a281199c6cd5ab317ff82929201ed1501f0c1"}'
+gcoin-cli mintforlicense \\mint之後回傳的值是transaction id; mint coin for license issueing
+# 除了color 0外所有的顏色都是經由license的發放創造出來的
+
+#step_2 : 取得目前 core 的 address
+gcoin-cli getfixedaddress \\
+
+#step_3 這階段所有的資訊會被轉成 hex 值，以便記錄在blcokchain上
+gcoin-cli encodelicenseinfo'{
+"version":1,
+"name":"Gcoin",
+"description":"testing",
+"issuer":"Gcoin",
+"divisibility":true,
+"fee_type":"fixed",
+"fee_rate":0.0,
+"upper_limit":0,
+"fee_collector":"可以放 step_2 的 address 或者其他",
+"mint_schedule":"free","member_control":false,
+"metadata_link":"http://g-coin.org", 
+"metadata_hash":"放 step_1 產生的transaction_id"}'
+
+#step_4 : 發送 license 到指定 address
+gcoin-cli sendlicensetoaddress license_revceiver_address color_id hex_value_from_step_3
+
+#step_5 : 鑄幣
+gcoin-cli mint amount color_id
+
+
+
+
+
+##reference
+#1 https://docs.google.com/document/d/1ANeCdEdxX7-vc_914Mb4grvGgRLDC0qzDaVXwevNlc4/edit
