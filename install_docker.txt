@@ -1,0 +1,21 @@
+sudo apt install docker.io <安裝docker>
+
+sudo gpasswd -a jimmy docker <將使用者"jimmy"加入到"docker"群組中>
+
+sudo service docker start
+newgrp docker
+sudo apt install python-pip
+
+sudo pip install docker-compose
+
+<手動下載>first_bank.tgz
+<轉換路徑到first_bank.tgz的資料夾>
+	cd 下載
+	ls
+	mv first_bank.tgz ../
+
+tar zxf first_bank.tgz
+cd DockerCompoose-Gcoin/
+chmod 777 -R ./data/mariadb/ <變更權限>
+chmod 777 -R ./log/mariadb/ <變更權限>
+docker-compose -p gcoin up -d
