@@ -8,16 +8,22 @@ sudo apt install python-pip
 
 sudo pip install docker-compose
 
-git clone "docker-compose in github"
+git clone https://github.com/OpenNetworking/DockerCompose-Gcoin
+cd DockerCompose-Gcoin 
+mv configure.conf.default configure.conf #改檔名
+sed -i 's/SMART_CONTRACT_COMMIT_HASH=\"\"/SMART_CONTRACT_COMMIT_HASH=\"6a9c275\"/g' configure.conf
+sed -i 's/OSS_COMMIT_HASH=\"\"/OSS_COMMIT_HASH=\"6a9c275\"/g' configure.conf
+----
+下步驟需要SSH KEY，要先生成Public-Private key pair，再配給github
 
-<手動下載>first_bank.tgz
-<轉換路徑到first_bank.tgz的資料夾>
-	cd 下載
-	ls
-	mv first_bank.tgz ../
-
-tar zxf first_bank.tgz
-cd DockerCompoose-Gcoin/
-chmod 777 -R ./data/mariadb/ <變更權限>
-chmod 777 -R ./log/mariadb/ <變更權限>
+創好key之後
+cd ~/.ssh #到家目錄的SSH裡
+ls
+cat id_rsa.pub #CAT表顯示該檔案，即Public Key的內容，將Public key的內容貼到github即可
+----
+cd DockerCompose-Gcoin 
+./build.sh -d # 開始安裝
+----
+cd docker/oss && git checkout 53c5b95 # && 做完在進行下一指令
+cd ../..
 docker-compose -p gcoin up -d
