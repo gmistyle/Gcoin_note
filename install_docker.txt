@@ -8,6 +8,8 @@ sudo apt install python-pip
 
 sudo pip install docker-compose
 
+git clone "docker-compose in github"
+
 <手動下載>first_bank.tgz
 <轉換路徑到first_bank.tgz的資料夾>
 	cd 下載
