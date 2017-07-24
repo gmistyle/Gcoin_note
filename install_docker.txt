@@ -8,7 +8,7 @@ sudo apt install python-pip
 
 sudo pip install docker-compose
 
-git clone https://github.com/OpenNetworking/DockerCompose-Gcoin
+git clone "DockerCompose-Gcoin"
 cd DockerCompose-Gcoin 
 mv configure.conf.default configure.conf #改檔名
 sed -i 's/SMART_CONTRACT_COMMIT_HASH=\"\"/SMART_CONTRACT_COMMIT_HASH=\"6a9c275\"/g' configure.conf
