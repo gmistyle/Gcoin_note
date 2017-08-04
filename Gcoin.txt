@@ -1,2 +1,6 @@
 cd DcokerCompose-Gcoin
-docker-compose -p gcoin down\up # 開關docker
+docker-compose -p gcoin down # 開關docker
+
+nano docker-compose.yml
+
+docker-compose -p gcoin up -d
