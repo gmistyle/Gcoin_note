@@ -1,0 +1,2 @@
+cd DcokerCompose-Gcoin
+docker-compose -p gcoin down\up # 開關docker
